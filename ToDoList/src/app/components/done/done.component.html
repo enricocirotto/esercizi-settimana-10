@@ -1,5 +1,7 @@
 
-<div *ngIf="(todos$) as todos">
+<div class="container">
+
+  <div *ngIf="(todos$) as todos">
     <h2>Todo completati</h2>
     
       <p *ngFor="let todo of todos; let i = index">
@@ -12,3 +14,6 @@
       </p>
     
   </div>
+
+</div>
+

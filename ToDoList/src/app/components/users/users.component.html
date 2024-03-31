@@ -1,16 +1,16 @@
-<div class="container d-flex justify-content-center">
-    <div class="card mx-auto border-0">
+<div class="container d-flex">
+    <div class="card border-0">
       <div class="card-body">
         <div class="users-container">
-          <div *ngFor="let user of users" class="user-card mx-auto">
+          <div *ngFor="let user of users" class="user-card ">
             <div class="card-body d-flex align-items-center">
               <img [src]="user.image" alt="User Image" class="user-image mr-3 w-50">
-              <div class="user-info d.d-flex flex-column">
+              <div class="user-info d.d-flex flex-column m-4">
                 <h5>Autore: {{ user.firstName }} {{ user.lastName }}</h5>
                 <div *ngIf="hasTasks(user.id)" class="d-flex flex-column align-items-stretch"> 
                   <div *ngFor="let todo of combinedItems">
                     <div *ngIf="todo.userId === user.id" class="task-container rounded-3 mt-3 d-flex pt-3 pe-3"
-                         [ngClass]="{'bg-info': todo.completed, 'bg-warning': !todo.completed}">
+                         [ngClass]="{'bg-info': todo.completed, 'bg-warning': !todo.completed, 'opacita': todo.completed || !todo.completed}">
                       <div class="containerCheck m-2">
                       </div>
                       <div class="text d-flex flex-column">

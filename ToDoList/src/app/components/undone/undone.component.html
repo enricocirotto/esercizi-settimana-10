@@ -1,6 +1,7 @@
+<div class="container">
 
-<div *ngIf="(todos$) as todos">
-    <h2>Todo completati</h2>
+  <div *ngIf="(todos$) as todos">
+    <h2>Todo non completati</h2>
     
       <p *ngFor="let todo of todos; let i = index">
         <ng-container *ngIf="!todo.completed && todo.todo.trim() !== '' && todo.todo.trim().length > 0; else incompletedTodo">
@@ -12,3 +13,7 @@
       </p>
     
   </div>
+
+</div>
+
+
