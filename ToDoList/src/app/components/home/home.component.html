@@ -1,0 +1,19 @@
+<div class="container d-flex flex-column">
+  <div class="border rounded-3 mt-3 d-flex w-50 pt-3 pb-1"
+    [ngClass]="{'bg-info': todo.completed, 'bg-warning': !todo.completed, 'opacity': todo.completed || !todo.completed}"
+    *ngFor="let todo of todos$">
+    <div class="containerCheck m-2">
+    </div>
+    <div class="text d-flex flex-column p-2 col">
+      <h2 class="fs-5">{{ todo.todo }}</h2>
+      <p>scritto da {{ getName(todo.userId) }}</p>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center col-auto me-5">
+      <p>
+        Completed:
+        <input type="checkbox" [checked]="todo.completed" (change)="toggleCompleted(todo)">
+      </p>
+    </div>
+  </div>
+</div>

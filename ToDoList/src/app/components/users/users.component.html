@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center">
+    <div class="card mx-auto border-0">
+      <div class="card-body">
+        <div class="users-container">
+          <div *ngFor="let user of users" class="user-card mx-auto">
+            <div class="card-body d-flex align-items-center">
+              <img [src]="user.image" alt="User Image" class="user-image mr-3 w-50">
+              <div class="user-info d.d-flex flex-column">
+                <h5>Autore: {{ user.firstName }} {{ user.lastName }}</h5>
+                <div *ngIf="hasTasks(user.id)" class="d-flex flex-column align-items-stretch"> 
+                  <div *ngFor="let todo of combinedItems">
+                    <div *ngIf="todo.userId === user.id" class="task-container rounded-3 mt-3 d-flex pt-3 pe-3"
+                         [ngClass]="{'bg-info': todo.completed, 'bg-warning': !todo.completed}">
+                      <div class="containerCheck m-2">
+                      </div>
+                      <div class="text d-flex flex-column">
+                        <span><h6 class="fs-6 fw-semibold">{{ todo.todo }}</h6></span>
+                        <span><p class="fs-7 mb-0">scritta da: {{ getName(todo.userId) }}</p></span>
+                        <div class="d-flex flex-column justify-content-center col-auto mt-2">
+                          <p>
+                            stato:
+                            <input type="checkbox" [checked]="todo.completed" (change)="toggleCompleted(todo)">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!hasTasks(user.id)">
+                  <p class="text-muted">nessuna task</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
